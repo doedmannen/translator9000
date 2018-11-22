@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>DAS TRANSLATOR 9000</title>
+    <link rel="stylesheet" href="./css/master.css">
+  </head>
+  <body>
+    <main id="view_input">
+      <section>
+        <h1>
+          Welcome to the translator9000.
+        </h1>
+        <p id="log_output"></p>
+      </section>
+
+      <section class="form">
+        <fieldset>
+          <input type="text" id="field_key" maxlength="13" placeholder="Enter a 13 letter key with unique letters a-z">
+          <!-- <button onclick="randomKey()">Get random key</button> -->
+        </fieldset>
+        <textarea id="field_input" rows="10" placeholder="Enter the text that you want to encode or decode"></textarea>
+        <button onclick="encodeText()">Encode</button>
+        <button onclick="decodeText()">Decode</button>
+      </section>
+
+    </main>
+
+    <main id="view_output">
+      <section>
+        <h1>
+          Output
+        </h1>
+      </section>
+      <section class="form">
+        <textarea id="field_output" name="name" rows="10" readonly></textarea>
+        <button onclick="changeView()">Go back</button>
+      </section>
+    </main>
+
+    <!-- DAS SUPER FANTASTISKE SCRIPT JA JA SEHR GUT -->
+    <script src="translator9000.js" charset="utf-8"></script>
+    <!-- DAS SUPER FANTASTISKE SCRIPT JA JA SEHR GUT -->
+  </body>
+</html>
