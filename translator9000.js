@@ -3,7 +3,9 @@
 
 */
 
-let view = 1;
+let view = 1; // Checks what we need to display
+
+// Get all the elements from HTML
 let v_input = document.getElementById('view_input');
 let v_output = document.getElementById('view_output');
 
@@ -14,8 +16,13 @@ let f_key = document.getElementById('field_key');
 
 let l_output = document.getElementById('log_output');
 
+// The alphabet
 let alpha = "qwertyuiopasdfghjklzxcvbnm"
 
+
+/*
+  Function for encoding text
+*/
 function encodeText() {
   let text = f_input.value;
   let output = "";
@@ -24,20 +31,24 @@ function encodeText() {
   let rest = alpha;
   let padding = "00000000";
 
+  // Check if the key is valid
   if(!validateKey()){
     return 0;
   }
 
+  // If key is valid, remove from rest to get two sets of keys
   for(let k of key){
     rest = rest.replace(k, "");
   }
 
+  // Convert chars to binary
   for(let i = 0; i < text.length; i++){
     let binaryNumber = text.charCodeAt(i).toString(2);
     binaryNumber = padding.substring(0, (8-binaryNumber.length)) + binaryNumber;
     binary += binaryNumber;
   }
 
+  // Convert binary to "random text"
   for (let i = 0; i < binary.length; i++) {
     let randomIndex = Math.floor(Math.random() * 13);
     if(binary[i] == 0){
@@ -52,6 +63,9 @@ function encodeText() {
   changeView();
 }
 
+/*
+Function for encoding text
+*/
 function decodeText() {
   let text = f_input.value;
   let output = "";
@@ -59,14 +73,17 @@ function decodeText() {
   let key = (f_key.value).toLowerCase();
   let rest = alpha;
 
+  // Check if the key is valid
   if(!validateKey()){
     return 0;
   }
 
+  // If key is valid, remove from rest to get two sets of keys
   for(let k of key){
     rest = rest.replace(k, "");
   }
 
+  // Convert from "random text" to binary
   for(let c of text){
     if(key.includes(c)){
       binary += "0";
@@ -75,6 +92,7 @@ function decodeText() {
     }
   }
 
+  // Convert from binary to char
   for(let i = 0; i < binary.length; i += 8){
     output += String.fromCharCode(parseInt(binary.substr(i, 8), 2));
   }
@@ -85,6 +103,8 @@ function decodeText() {
   changeView();
 }
 
+
+// Changes the view
 function changeView() {
   view *= -1;
   if(view === 1){
